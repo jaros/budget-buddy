@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['nvd3'])
 
-  .controller('DashCtrl', ['$scope', 'Transactions', mainController])
+  .controller('DashCtrl', ['$scope', '$state', 'Transactions', mainController])
 
   .controller('TransactionsCtrl', function ($scope, $state, Transactions) {
     var vm = this;
@@ -17,6 +17,12 @@ angular.module('starter.controllers', ['nvd3'])
     vm.addCategory = function (trx) {
       $state.go('tab.transactions-category', {trxId: trx.id})
     };
+  })
+
+  .controller('BudgetCategoryDetailsCtrl', function ($scope, $stateParams, Transactions) {
+    var vm = this;
+
+    vm.selectedCategory = $stateParams.category;
   })
 
   .controller('TransactionDetailCtrl', function ($scope, $stateParams, Transactions) {
@@ -74,7 +80,7 @@ angular.module('starter.controllers', ['nvd3'])
 
   });
 
-function mainController($scope, Transactions) {
+function mainController($scope, $state, Transactions) {
   var vm = this;
 
   $scope.$on('$ionicView.enter', function (e) {
@@ -113,6 +119,17 @@ function mainController($scope, Transactions) {
       },
       y: function (d) {
         return d.y;
+      },
+      pie: {
+        dispatch: {
+          elementClick: function(t) {
+            console.log("one click: " + t.data.key);
+          },
+          elementDblClick: function (t) {
+            console.log("db click: " + t.data.key);
+            $state.go('tab.budget-details', {category: t.data.key});
+          }
+        }
       },
       showLabels: true,
       duration: 500,
