@@ -93,9 +93,9 @@ function mainController($scope, Transactions) {
       });
     });
 
-    vm.data = [];
+    vm.pieData = [];
     _.each(sumAmount, function (element, index, list) {
-      vm.data.push({
+      vm.pieData.push({
         key: index,
         y: element.amount ? parseFloat(element.amount) : element
       });
@@ -103,7 +103,7 @@ function mainController($scope, Transactions) {
 
   });
 
-  vm.options = {
+  vm.pieOptions = {
     chart: {
       type: 'pieChart',
       height: 500,
@@ -128,4 +128,80 @@ function mainController($scope, Transactions) {
       }
     }
   };
+
+  vm.barOptions = {
+    chart: {
+      type: 'multiBarHorizontalChart',
+      height: 450,
+      x: function(d){return d.label;},
+      y: function(d){return d.value;},
+      showControls: false,
+      showValues: true,
+      duration: 500,
+      xAxis: {
+        showMaxMin: false
+      },
+      yAxis: {
+        axisLabel: 'Values',
+        tickFormat: function(d){
+          return d3.format(',.2f')(d);
+        }
+      }
+    }
+  };
+
+  vm.barData = [
+    {
+      "key": "Target",
+      "color": "#d62728",
+      "values": [
+        {
+          "label" : "Mediamarket",
+          "value" : 100
+        } ,
+        {
+          "label" : "Penny" ,
+          "value" : 150
+        } ,
+        {
+          "label" : "Lidl" ,
+          "value" : 195.70
+        } ,
+        {
+          "label" : "Edeka" ,
+          "value" : 181.74
+        } ,
+        {
+          "label" : "Kaufland" ,
+          "value" : 172.009071426284
+        }
+      ]
+    },
+    {
+      "key": "Spent",
+      "color": "#1f77b4",
+      "values": [
+        {
+          "label" : "Mediamarket" ,
+          "value" : 50
+        } ,
+        {
+          "label" : "Penny" ,
+          "value" : 97.5
+        } ,
+        {
+          "label" : "Lidl" ,
+          "value" : 185
+        } ,
+        {
+          "label" : "Edeka" ,
+          "value" : 170
+        },
+        {
+          "label" : "Kaufland" ,
+          "value" : 49.9
+        }
+      ]
+    }
+  ];
 }

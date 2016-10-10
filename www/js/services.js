@@ -60,13 +60,13 @@ angular.module('starter.services', [])
   },{
     id: 1,
     recipient: 'LIDL',
-    amount: '12',
+    amount: '102',
     date: '23.10.2016',
     category: 'Food'
   },{
     id: 2,
     recipient: 'SportX',
-    amount: '30',
+    amount: '50',
     date: '21.10.2016',
     category: 'Leisure'
   },{
@@ -90,9 +90,15 @@ angular.module('starter.services', [])
   },{
     id: 6,
     recipient: 'Kaufland',
-    amount: '9',
+    amount: '59',
     date: '01.10.2016',
     category: 'Food'
+  },{
+    id: 7,
+    recipient: '-',
+    amount: '30',
+    date: '-',
+    category: 'Unspent'
   }];
 
   return {
