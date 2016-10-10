@@ -50,7 +50,7 @@ angular.module('starter', [
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-budget.html',
-        controller: 'DashCtrl'
+        controller: 'DashCtrl as vm'
       }
     }
   })
@@ -60,7 +60,7 @@ angular.module('starter', [
       views: {
         'tab-chats': {
           templateUrl: 'templates/tab-transactions.html',
-          controller: 'ChatsCtrl'
+          controller: 'TransactionsCtrl as vm'
         }
       }
     })

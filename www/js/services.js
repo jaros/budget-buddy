@@ -54,31 +54,31 @@ angular.module('starter.services', [])
   var trxs = [{
     id: 0,
     recipient: 'Cheapair',
-    amount: '22 EUR',
+    amount: '22',
     date: '23.10.2016',
     category: 'Travel'
   },{
     id: 1,
     recipient: 'LIDL',
-    amount: '12 EUR',
+    amount: '12',
     date: '23.10.2016',
     category: 'Food'
   },{
     id: 2,
     recipient: 'SportX',
-    amount: '50 EUR',
+    amount: '30',
     date: '21.10.2016',
     category: 'Leisure'
   },{
     id: 3,
     recipient: 'Bauhof',
-    amount: '222 EUR',
+    amount: '25',
     date: '23.08.2016',
     category: 'Utility'
   },{
     id: 4,
     recipient: 'Cheapair',
-    amount: '5 EUR',
+    amount: '5',
     date: '02.10.2016',
     category: 'Travel'
   }];
