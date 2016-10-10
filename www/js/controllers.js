@@ -30,13 +30,30 @@ angular.module('starter.controllers', ['nvd3'])
 function mainController($scope, Transactions) {
   var vm = this;
 
-  $scope.$on('$ionicView.enter', function(e) {
-    vm.data = Transactions.all().map(function (trx) {
-      return {
-        key: trx.category,
-        y: parseInt(trx.amount)
-      };
+  $scope.$on('$ionicView.enter', function (e) {
+
+    var grouped = _.groupBy(Transactions.all(), function (trx) {
+      return trx.category;
     });
+
+    var sumAmount = _.mapObject(grouped, function (trxs, categoryName) {
+      return _.reduce(trxs, function (memo, trx) {
+        if (memo.amount) {
+          return parseFloat(memo.amount) + parseFloat(trx.amount);
+        } else {
+          return parseFloat(memo) + parseFloat(trx.amount);
+        }
+      });
+    });
+
+    vm.data = [];
+    _.each(sumAmount, function (element, index, list) {
+      vm.data.push({
+        key: index,
+        y: element.amount ? parseFloat(element.amount) : element
+      });
+    });
+
   });
 
   vm.options = {
@@ -64,35 +81,4 @@ function mainController($scope, Transactions) {
       }
     }
   };
-
-  /*vm.data = [
-   {
-   key: "One",
-   y: 5
-   },
-   {
-   key: "Two",
-   y: 2
-   },
-   {
-   key: "Three",
-   y: 9
-   },
-   {
-   key: "Four",
-   y: 7
-   },
-   {
-   key: "Five",
-   y: 4
-   },
-   {
-   key: "Six",
-   y: 3
-   },
-   {
-   key: "Seven",
-   y: .5
-   }
-   ];*/
 }

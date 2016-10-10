@@ -8,6 +8,7 @@
 angular.module('starter', [
   'ionic',
   'nvd3',
+  'underscore',
   'starter.controllers',
   'starter.services'
 ])

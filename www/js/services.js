@@ -81,6 +81,18 @@ angular.module('starter.services', [])
     amount: '5',
     date: '02.10.2016',
     category: 'Travel'
+  },{
+    id: 4,
+    recipient: 'Kaufland',
+    amount: '7',
+    date: '30.09.2016',
+    category: 'Food'
+  },{
+    id: 4,
+    recipient: 'Kaufland',
+    amount: '9',
+    date: '01.10.2016',
+    category: 'Food'
   }];
 
   return {

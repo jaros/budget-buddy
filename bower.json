@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "underscore": "^1.8.3",
-    "angular-nvd3": "^1.0.9"
+    "angular-nvd3": "^1.0.9",
+    "angular-underscore-module": "^1.0.3"
   }
 }
