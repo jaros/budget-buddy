@@ -3,6 +3,7 @@ angular.module('starter.controllers', ['nvd3'])
   .controller('DashCtrl', ['$scope', 'Transactions', mainController])
 
   .controller('TransactionsCtrl', function ($scope, Transactions) {
+    var vm = this;
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
     // To listen for when this page is active (for example, to refresh data),
@@ -11,14 +12,15 @@ angular.module('starter.controllers', ['nvd3'])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
-    $scope.transactions = Transactions.all();
-    $scope.remove = function (trx) {
+    vm.transactions = Transactions.all();
+    vm.remove = function (trx) {
       Transactions.remove(trx);
     };
   })
 
-  .controller('ChatDetailCtrl', function ($scope, $stateParams, Transactions) {
-    $scope.chat = Transactions.get($stateParams.chatId);
+  .controller('TransactionDetailCtrl', function ($scope, $stateParams, Transactions) {
+    var vm = this;
+    vm.trx = Transactions.get($stateParams.trxId);
   })
 
   .controller('AccountCtrl', function ($scope) {

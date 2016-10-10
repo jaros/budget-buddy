@@ -1,0 +1,26 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{vm.trx.id}}">
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col">Recipient</div>
+      <div class="col">{{vm.trx.recipient}}</div>
+    </div>
+    <div class="row">
+      <div class="col">Amount</div>
+      <div class="col">{{vm.trx.amount}}</div>
+    </div>
+    <div class="row">
+      <div class="col">Date</div>
+      <div class="col">{{vm.trx.date}}</div>
+    </div>
+    <div class="row">
+      <div class="col">Category</div>
+      <div class="col">{{vm.trx.category}}</div>
+    </div>
+  </ion-content>
+</ion-view>

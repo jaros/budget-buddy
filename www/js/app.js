@@ -66,11 +66,11 @@ angular.module('starter', [
       }
     })
     .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+      url: '/transactions/:trxId',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+          templateUrl: 'templates/transaction-detail.html',
+          controller: 'TransactionDetailCtrl as vm'
         }
       }
     })

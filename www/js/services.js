@@ -84,7 +84,7 @@ angular.module('starter.services', [])
   },{
     id: 4,
     recipient: 'Kaufland',
-    amount: '7',
+    amount: '7.75',
     date: '30.09.2016',
     category: 'Food'
   },{
