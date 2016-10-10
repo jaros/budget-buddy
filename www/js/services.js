@@ -82,13 +82,13 @@ angular.module('starter.services', [])
     date: '02.10.2016',
     category: 'Travel'
   },{
-    id: 4,
+    id: 5,
     recipient: 'Kaufland',
     amount: '7.75',
     date: '30.09.2016',
     category: 'Food'
   },{
-    id: 4,
+    id: 6,
     recipient: 'Kaufland',
     amount: '9',
     date: '01.10.2016',
@@ -109,6 +109,14 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    save: function (trx) {
+      for (var i = 0; i < trxs.length; i++) {
+        if (trxs[i].id == trx.id) {
+          trxs[i] = trx;
+          return;
+        }
+      }
     }
   };
 });

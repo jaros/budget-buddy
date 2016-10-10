@@ -1,0 +1,12 @@
+<ion-view view-title="Select category">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-avatar item-icon-right" ng-repeat="category in vm.categories" ng-click="vm.save(category)" type="item-text-wrap">
+        <div class="row">
+          <div class="col">{{category.name}}</div>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

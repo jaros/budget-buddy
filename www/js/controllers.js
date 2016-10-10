@@ -2,25 +2,58 @@ angular.module('starter.controllers', ['nvd3'])
 
   .controller('DashCtrl', ['$scope', 'Transactions', mainController])
 
-  .controller('TransactionsCtrl', function ($scope, Transactions) {
+  .controller('TransactionsCtrl', function ($scope, $state, Transactions) {
     var vm = this;
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
     // To listen for when this page is active (for example, to refresh data),
     // listen for the $ionicView.enter event:
     //
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
+    $scope.$on('$ionicView.enter', function(e) {
+      vm.transactions = Transactions.all();
+      // vm.transactions = [];
+    });
 
-    vm.transactions = Transactions.all();
-    vm.remove = function (trx) {
-      Transactions.remove(trx);
+    vm.addCategory = function (trx) {
+      $state.go('tab.transactions-category', {trxId: trx.id})
     };
   })
 
   .controller('TransactionDetailCtrl', function ($scope, $stateParams, Transactions) {
     var vm = this;
     vm.trx = Transactions.get($stateParams.trxId);
+  })
+
+  .controller('CategoryCtrl', function ($scope, $stateParams, $state, Transactions) {
+    var vm = this;
+    vm.trx = Transactions.get($stateParams.trxId);
+
+    vm.save = function(category) {
+      vm.trx.category = category.name;
+      Transactions.save(vm.trx);
+      $state.go('tab.transactions')
+    };
+
+    vm.categories = [
+      {
+        name: 'Travel'
+      },
+      {
+        name: 'Food'
+      },{
+        name: 'Leisure'
+      },{
+        name: 'Utility'
+      },{
+        name: 'Rental'
+      },{
+        name: 'Family'
+      },{
+        name: 'Hobby'
+      },{
+        name: 'Education'
+      }
+    ];
   })
 
   .controller('AccountCtrl', function ($scope) {

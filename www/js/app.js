@@ -46,39 +46,48 @@ angular.module('starter', [
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
+  .state('tab.budget', {
     url: '/budget',
     views: {
-      'tab-dash': {
+      'tab-budget': {
         templateUrl: 'templates/tab-budget.html',
         controller: 'DashCtrl as vm'
       }
     }
   })
 
-  .state('tab.chats', {
+  .state('tab.transactions', {
       url: '/transactions',
       views: {
-        'tab-chats': {
+        'tab-transactions': {
           templateUrl: 'templates/tab-transactions.html',
           controller: 'TransactionsCtrl as vm'
         }
       }
     })
-    .state('tab.chat-detail', {
+    .state('tab.transactions-detail', {
       url: '/transactions/:trxId',
       views: {
-        'tab-chats': {
+        'tab-transactions': {
           templateUrl: 'templates/transaction-detail.html',
           controller: 'TransactionDetailCtrl as vm'
         }
       }
     })
+    .state('tab.transactions-category', {
+      url: '/transactions/:trxId/category',
+      views: {
+        'tab-transactions': {
+          templateUrl: 'templates/select-category.html',
+          controller: 'CategoryCtrl as vm'
+        }
+      }
+    })
 
-  .state('tab.account', {
+  .state('tab.offers', {
     url: '/offers',
     views: {
-      'tab-account': {
+      'tab-offers': {
         templateUrl: 'templates/tab-offers.html',
         controller: 'AccountCtrl'
       }
