@@ -9,7 +9,7 @@ angular.module('starter.controllers', ['nvd3'])
     // To listen for when this page is active (for example, to refresh data),
     // listen for the $ionicView.enter event:
     //
-    $scope.$on('$ionicView.enter', function(e) {
+    $scope.$on('$ionicView.enter', function (e) {
       vm.transactions = Transactions.all();
       // vm.transactions = [];
     });
@@ -23,6 +23,208 @@ angular.module('starter.controllers', ['nvd3'])
     var vm = this;
 
     vm.selectedCategory = $stateParams.category;
+
+    vm.barOptions = {
+      chart: {
+        type: 'multiBarHorizontalChart',
+        height: 450,
+        x: function (d) {
+          return d.label;
+        },
+        y: function (d) {
+          return d.value;
+        },
+        showControls: false,
+        showValues: true,
+        duration: 500,
+        xAxis: {
+          showMaxMin: false
+        },
+        yAxis: {
+          axisLabel: 'Values',
+          tickFormat: function (d) {
+            return d3.format(',.2f')(d);
+          }
+        },
+        margin: {
+          left: 75
+        }
+      }
+    };
+
+    if (vm.selectedCategory == 'Leisure') {
+      vm.barData = [
+        {
+          "key": "Target",
+          "color": "#d62728",
+          "values": [
+            {
+              "label": "Pink Palace",
+              "value": 50
+            },
+            {
+              "label": "OperaHause",
+              "value": 250
+            },
+            {
+              "label": "Spa",
+              "value": 30
+            }
+          ]
+        },
+        {
+          "key": "Spent",
+          "color": "#1f77b4",
+          "values": [
+            {
+              "label": "Pink Palace",
+              "value": 30
+            },
+            {
+              "label": "OperaHause",
+              "value": 100
+            },
+            {
+              "label": "Spa",
+              "value": 30
+            }
+          ]
+        }
+      ];
+    } else if (vm.selectedCategory == 'Travel') {
+      vm.barData = [
+        {
+          "key": "Target",
+          "color": "#d62728",
+          "values": [
+            {
+              "label": "Lufthansa",
+              "value": 750
+            },
+            {
+              "label": "SWISS Air",
+              "value": 400
+            },
+            {
+              "label": "Alpine Resort",
+              "value": 500
+            }
+          ]
+        },
+        {
+          "key": "Spent",
+          "color": "#1f77b4",
+          "values": [
+            {
+              "label": "Lufthansa",
+              "value": 250
+            },
+            {
+              "label": "SWISS Air",
+              "value": 390
+            },
+            {
+              "label": "Alpine Resort",
+              "value": 350
+            }
+          ]
+        }
+      ];
+    }else if (vm.selectedCategory == 'Utility') {
+      vm.barData = [
+        {
+          "key": "Target",
+          "color": "#d62728",
+          "values": [
+            {
+              "label": "Electricity",
+              "value": 35
+            },
+            {
+              "label": "TV/Internet",
+              "value": 49
+            },
+            {
+              "label": "Gas",
+              "value": 10
+            }
+          ]
+        },
+        {
+          "key": "Spent",
+          "color": "#1f77b4",
+          "values": [
+            {
+              "label": "Electricity",
+              "value": 33.55
+            },
+            {
+              "label": "TV/Internet",
+              "value": 49
+            },
+            {
+              "label": "Gas",
+              "value": 11.98
+            }
+          ]
+        }
+      ];
+    } else {
+      vm.barData = [
+        {
+          "key": "Target",
+          "color": "#d62728",
+          "values": [
+            {
+              "label": "Mediamarket",
+              "value": 100
+            },
+            {
+              "label": "Penny",
+              "value": 150
+            },
+            {
+              "label": "Lidl",
+              "value": 195.70
+            },
+            {
+              "label": "Edeka",
+              "value": 181.74
+            },
+            {
+              "label": "Kaufland",
+              "value": 172.009071426284
+            }
+          ]
+        },
+        {
+          "key": "Spent",
+          "color": "#1f77b4",
+          "values": [
+            {
+              "label": "Mediamarket",
+              "value": 50
+            },
+            {
+              "label": "Penny",
+              "value": 97.5
+            },
+            {
+              "label": "Lidl",
+              "value": 185
+            },
+            {
+              "label": "Edeka",
+              "value": 170
+            },
+            {
+              "label": "Kaufland",
+              "value": 49.9
+            }
+          ]
+        }
+      ];
+    }
   })
 
   .controller('TransactionDetailCtrl', function ($scope, $stateParams, Transactions) {
@@ -34,7 +236,7 @@ angular.module('starter.controllers', ['nvd3'])
     var vm = this;
     vm.trx = Transactions.get($stateParams.trxId);
 
-    vm.save = function(category) {
+    vm.save = function (category) {
       vm.trx.category = category.name;
       Transactions.save(vm.trx);
       $state.go('tab.transactions')
@@ -46,17 +248,17 @@ angular.module('starter.controllers', ['nvd3'])
       },
       {
         name: 'Food'
-      },{
+      }, {
         name: 'Leisure'
-      },{
+      }, {
         name: 'Utility'
-      },{
+      }, {
         name: 'Rental'
-      },{
+      }, {
         name: 'Family'
-      },{
+      }, {
         name: 'Hobby'
-      },{
+      }, {
         name: 'Education'
       }
     ];
@@ -66,7 +268,7 @@ angular.module('starter.controllers', ['nvd3'])
     var vm = this;
     vm.shownGroup = 1;
 
-    vm.toggleGroup = function(group) {
+    vm.toggleGroup = function (group) {
       if (vm.isGroupShown(group)) {
         vm.shownGroup = null;
       } else {
@@ -74,7 +276,7 @@ angular.module('starter.controllers', ['nvd3'])
       }
     };
 
-    vm.isGroupShown = function(group) {
+    vm.isGroupShown = function (group) {
       return vm.shownGroup === group;
     };
 
@@ -122,12 +324,14 @@ function mainController($scope, $state, Transactions) {
       },
       pie: {
         dispatch: {
-          elementClick: function(t) {
+          elementClick: function (t) {
             console.log("one click: " + t.data.key);
           },
           elementDblClick: function (t) {
             console.log("db click: " + t.data.key);
-            $state.go('tab.budget-details', {category: t.data.key});
+            if (t.data.key != 'Unspent') {
+              $state.go('tab.budget-details', {category: t.data.key});
+            }
           }
         }
       },
@@ -145,80 +349,4 @@ function mainController($scope, $state, Transactions) {
       }
     }
   };
-
-  vm.barOptions = {
-    chart: {
-      type: 'multiBarHorizontalChart',
-      height: 450,
-      x: function(d){return d.label;},
-      y: function(d){return d.value;},
-      showControls: false,
-      showValues: true,
-      duration: 500,
-      xAxis: {
-        showMaxMin: false
-      },
-      yAxis: {
-        axisLabel: 'Values',
-        tickFormat: function(d){
-          return d3.format(',.2f')(d);
-        }
-      }
-    }
-  };
-
-  vm.barData = [
-    {
-      "key": "Target",
-      "color": "#d62728",
-      "values": [
-        {
-          "label" : "Mediamarket",
-          "value" : 100
-        } ,
-        {
-          "label" : "Penny" ,
-          "value" : 150
-        } ,
-        {
-          "label" : "Lidl" ,
-          "value" : 195.70
-        } ,
-        {
-          "label" : "Edeka" ,
-          "value" : 181.74
-        } ,
-        {
-          "label" : "Kaufland" ,
-          "value" : 172.009071426284
-        }
-      ]
-    },
-    {
-      "key": "Spent",
-      "color": "#1f77b4",
-      "values": [
-        {
-          "label" : "Mediamarket" ,
-          "value" : 50
-        } ,
-        {
-          "label" : "Penny" ,
-          "value" : 97.5
-        } ,
-        {
-          "label" : "Lidl" ,
-          "value" : 185
-        } ,
-        {
-          "label" : "Edeka" ,
-          "value" : 170
-        },
-        {
-          "label" : "Kaufland" ,
-          "value" : 49.9
-        }
-      ]
-    }
-  ];
 }
