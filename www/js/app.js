@@ -89,7 +89,7 @@ angular.module('starter', [
     views: {
       'tab-offers': {
         templateUrl: 'templates/tab-offers.html',
-        controller: 'AccountCtrl'
+        controller: 'OffersCtrl as vm'
       }
     }
   });

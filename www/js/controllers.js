@@ -56,10 +56,22 @@ angular.module('starter.controllers', ['nvd3'])
     ];
   })
 
-  .controller('AccountCtrl', function ($scope) {
-    $scope.settings = {
-      enableFriends: true
+  .controller('OffersCtrl', function ($scope) {
+    var vm = this;
+    vm.shownGroup = 1;
+
+    vm.toggleGroup = function(group) {
+      if (vm.isGroupShown(group)) {
+        vm.shownGroup = null;
+      } else {
+        vm.shownGroup = group;
+      }
     };
+
+    vm.isGroupShown = function(group) {
+      return vm.shownGroup === group;
+    };
+
   });
 
 function mainController($scope, Transactions) {

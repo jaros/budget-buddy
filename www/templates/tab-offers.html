@@ -1,9 +1,189 @@
 <ion-view view-title="Offers">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+
+    <div class="list">
+
+      <!-- 1 ==========================-->
+
+
+      <div class="item item-stable row item-accordion" ng-click="vm.toggleGroup(1)" ng-class="{active: vm.isGroupShown(1)}">
+        <div class="col"><i class="icon" ng-class="vm.isGroupShown(1) ? 'ion-minus' : 'ion-plus'"></i>&nbsp;
+          Mediamarket
+        </div>
+        <div>
+          Get: 200 EUR
+        </div>
+      </div>
+      <span ng-show="vm.isGroupShown(1)">
+      <div class="item item-divider item-accordion">
+        Expenses
+      </div>
+
+      <div class="item row item-accordion">
+        <div class="col">Last Month</div>
+        <div class="col">110 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Last Year</div>
+        <div class="col">1600 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Avg. Purchase</div>
+        <div class="col">7.23 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Purchase Count</div>
+        <div class="col">230</div>
+      </div>
+
+      <div class="item item-divider item-accordion">
+        Offers
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Spend</div>
+        <div class="col">1000 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Get</div>
+        <div class="col">200 EUR</div>
+      </div>
+    </span>
+
+      <!-- 2 ======================-->
+
+      <div class="item item-stable row item-accordion" ng-click="vm.toggleGroup(2)" ng-class="{active: vm.isGroupShown(2)}">
+        <div class="col"><i class="icon" ng-class="vm.isGroupShown(2) ? 'ion-minus' : 'ion-plus'"></i>&nbsp;
+          Penny
+        </div>
+        <div>
+          Get: 125 EUR
+        </div>
+      </div>
+      <span ng-show="vm.isGroupShown(2)">
+      <div class="item item-divider item-accordion">
+        Expenses
+      </div>
+
+      <div class="item row item-accordion">
+        <div class="col">Last Month</div>
+        <div class="col">110 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Last Year</div>
+        <div class="col">1600 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Avg. Purchase</div>
+        <div class="col">7.23 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Purchase Count</div>
+        <div class="col">230</div>
+      </div>
+
+      <div class="item item-divider item-accordion">
+        Offers
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Spend</div>
+        <div class="col">1000 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Get</div>
+        <div class="col">200 EUR</div>
+      </div>
+    </span>
+
+      <!-- 3 ======================-->
+      <div class="item item-stable row item-accordion" ng-click="vm.toggleGroup(3)" ng-class="{active: vm.isGroupShown(3)}">
+        <div class="col"><i class="icon" ng-class="vm.isGroupShown(3) ? 'ion-minus' : 'ion-plus'"></i>&nbsp;
+          Lidl
+        </div>
+        <div>
+          Get: 100 EUR
+        </div>
+      </div>
+      <span ng-show="vm.isGroupShown(3)">
+      <div class="item item-divider item-accordion">
+        Expenses
+      </div>
+
+      <div class="item row item-accordion">
+        <div class="col">Last Month</div>
+        <div class="col">110 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Last Year</div>
+        <div class="col">1600 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Avg. Purchase</div>
+        <div class="col">7.23 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Purchase Count</div>
+        <div class="col">230</div>
+      </div>
+
+      <div class="item item-divider item-accordion">
+        Offers
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Spend</div>
+        <div class="col">1000 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Get</div>
+        <div class="col">200 EUR</div>
+      </div>
+    </span>
+
+   <!-- 4 ======================-->
+
+      <div class="item item-stable row item-accordion" ng-click="vm.toggleGroup(4)" ng-class="{active: vm.isGroupShown(4)}">
+        <div class="col"><i class="icon" ng-class="vm.isGroupShown(4) ? 'ion-minus' : 'ion-plus'"></i>&nbsp;
+          Edeka
+        </div>
+        <div>
+          Get: 150 EUR
+        </div>
+      </div>
+      <span ng-show="vm.isGroupShown(4)">
+      <div class="item item-divider item-accordion">
+        Expenses
+      </div>
+
+      <div class="item row item-accordion">
+        <div class="col">Last Month</div>
+        <div class="col">110 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Last Year</div>
+        <div class="col">1600 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Avg. Purchase</div>
+        <div class="col">7.23 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Purchase Count</div>
+        <div class="col">230</div>
+      </div>
+
+      <div class="item item-divider item-accordion">
+        Offers
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Spend</div>
+        <div class="col">1000 EUR</div>
+      </div>
+      <div class="item row item-accordion">
+        <div class="col">Get</div>
+        <div class="col">200 EUR</div>
+      </div>
+    </span>
+
+    </div>
+
   </ion-content>
 </ion-view>
