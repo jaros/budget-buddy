@@ -1,7 +1,7 @@
 <ion-view view-title="Transactions">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="trx in vm.transactions" type="item-text-wrap" href="#/tab/transactions/{{trx.id}}">
+      <ion-item class="item-remove-animate" ng-repeat="trx in vm.transactions" type="item-text-wrap" href="#/tab/transactions/{{trx.id}}">
         <div class="row">
           <div class="col">{{trx.recipient}}</div>
           <div class="col">{{trx.amount}} EUR</div>
