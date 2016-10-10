@@ -47,4 +47,56 @@ angular.module('starter.services', [])
       return null;
     }
   };
+}).factory('Transactions', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var trxs = [{
+    id: 0,
+    recipient: 'Cheapair',
+    amount: '22 EUR',
+    date: '23.10.2016',
+    category: 'Travel'
+  },{
+    id: 1,
+    recipient: 'LIDL',
+    amount: '12 EUR',
+    date: '23.10.2016',
+    category: 'Food'
+  },{
+    id: 2,
+    recipient: 'SportX',
+    amount: '50 EUR',
+    date: '21.10.2016',
+    category: 'Leisure'
+  },{
+    id: 3,
+    recipient: 'Bauhof',
+    amount: '222 EUR',
+    date: '23.08.2016',
+    category: 'Utility'
+  },{
+    id: 4,
+    recipient: 'Cheapair',
+    amount: '5 EUR',
+    date: '02.10.2016',
+    category: 'Travel'
+  }];
+
+  return {
+    all: function() {
+      return trxs;
+    },
+    remove: function(trx) {
+      trxs.splice(trxs.indexOf(trx), 1);
+    },
+    get: function(trxId) {
+      for (var i = 0; i < trxs.length; i++) {
+        if (trxs[i].id === parseInt(trxId)) {
+          return trxs[i];
+        }
+      }
+      return null;
+    }
+  };
 });
