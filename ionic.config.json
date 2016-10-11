@@ -1,4 +1,10 @@
 {
   "name": "budget-buddy-mob",
-  "app_id": ""
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/categories",
+      "proxyUrl": "http://localhost:8080/categories"
+    }
+  ]
 }

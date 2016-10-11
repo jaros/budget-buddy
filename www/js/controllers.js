@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['nvd3'])
 
-  .controller('DashCtrl', ['$scope', '$state', 'Transactions', mainController])
+  .controller('DashCtrl', ['$scope', '$state', 'Categories', mainController])
 
   .controller('TransactionsCtrl', function ($scope, $state, Transactions) {
     var vm = this;
@@ -363,12 +363,12 @@ angular.module('starter.controllers', ['nvd3'])
 
   });
 
-function mainController($scope, $state, Transactions) {
+function mainController($scope, $state, Categories) {
   var vm = this;
 
   $scope.$on('$ionicView.enter', function (e) {
 
-    var grouped = _.groupBy(Transactions.all(), function (trx) {
+    /*var grouped = _.groupBy(Transactions.all(), function (trx) {
       return trx.category;
     });
 
@@ -380,13 +380,16 @@ function mainController($scope, $state, Transactions) {
           return parseFloat(memo) + parseFloat(trx.amount);
         }
       });
-    });
+    });*/
 
     vm.pieData = [];
-    _.each(sumAmount, function (element, index, list) {
-      vm.pieData.push({
-        key: index,
-        y: element.amount ? parseFloat(element.amount) : element
+
+    Categories.all().then(function (categories) {
+      _.each(categories, function (element, index) {
+        vm.pieData.push({
+          key: element.category.name,
+          y: element.total
+        });
       });
     });
 
