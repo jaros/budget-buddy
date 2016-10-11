@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
   .constant('serviceApiUrl', '')
-  // .constant('serviceApiUrl','http://wcciqphwza.localtunnel.me')
+  // .constant('serviceApiUrl','http://fhvdpoayoq.localtunnel.me')
 
 .factory('Categories', function($http, serviceApiUrl) {
   return {
@@ -11,15 +11,23 @@ angular.module('starter.services', [])
         });
 
         var res = _.map(ruleCategories, function(elem) {
+          var currency = elem.currencies[0];
+          var isCategory = elem._id.category == null;
+          var categoryName = isCategory ? 'Unclassified' : elem._id.category.name;
+          var categoryBudget = isCategory ? null : elem._id.category.budget;
+          var totalAmount = currency ? currency.total : null;
+          if (totalAmount != null && categoryName == 'Unclassified') {
+            totalAmount /= 40;
+          }
           return {
-            id: elem._id.category == null ? 'undefined' : elem._id.category._id.$oid,
+            id: isCategory ? 'undefined' : elem._id.category._id.$oid,
             category: {
-              name: elem._id.category == null ? 'Unclassified' : elem._id.category.name,
-              budget: elem._id.category == null ? null : elem._id.category.budget
+              name: categoryName,
+              budget: categoryBudget
             },
-            currency: elem.currencies[0] ? elem.currencies[0].currency : null, // assume that 1st element is always EUR
-            total: elem.currencies[0] ? elem.currencies[0].total : null,
-            count: elem.currencies[0] ? elem.currencies[0].count : null
+            currency: currency ? currency.currency : null, // assume that 1st element is always EUR
+            total: totalAmount,
+            count: currency ? currency.count : null
           }
         });
         return res;
