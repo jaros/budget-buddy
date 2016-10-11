@@ -55,6 +55,16 @@ angular.module('starter', [
       }
     }
   })
+
+   .state('tab.expenses', {
+    url: '/expenses',
+    views: {
+      'tab-expenses': {
+        templateUrl: 'templates/tab-expenses.html',
+        controller: 'BudgetCtrl as vm'
+      }
+    }
+  })
     .state('tab.budget-details', {
     url: '/budget-category-details/:category',
     views: {
