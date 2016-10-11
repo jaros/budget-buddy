@@ -4,7 +4,11 @@ angular.module('starter.services', [])
   return {
     all: function() {
       return $http.get('/api/categories').then(function (resp) {
-        var res = _.map(resp.data[0], function(elem) {
+        var ruleCategories = _.filter(resp.data[0], function (cat) {
+            return typeof cat._id.category != "string";
+        });
+
+        var res = _.map(ruleCategories, function(elem) {
           return {
             id: elem._id.category == null ? 'undefined' : elem._id.category._id.$oid,
             category: {
