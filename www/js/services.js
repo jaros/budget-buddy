@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
-  // .constant('serviceApiUrl', '')
-  .constant('serviceApiUrl','http://fhvdpoayoq.localtunnel.me')
+  .constant('serviceApiUrl', '')
+  // .constant('serviceApiUrl','http://napurttuuv.localtunnel.me')
 
 .factory('Categories', function($http, serviceApiUrl) {
   return {
@@ -13,10 +13,10 @@ angular.module('starter.services', [])
         var res = _.map(ruleCategories, function(elem) {
           var currency = elem.currencies[0];
           var isCategory = elem._id.category == null;
-          var categoryName = isCategory ? 'Unclassified' : elem._id.category.name;
+          var categoryName = isCategory ? 'Food' : elem._id.category.name;
           var categoryBudget = isCategory ? null : elem._id.category.budget;
           var totalAmount = currency ? currency.total : null;
-          if (totalAmount != null && categoryName == 'Unclassified') {
+          if (totalAmount != null && categoryName == 'Food') {
             totalAmount /= 40;
           }
           return {

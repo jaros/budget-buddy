@@ -286,10 +286,6 @@ angular.module('starter.controllers', ['nvd3'])
               "value": 400
             },
             {
-              "label": "Mediamarket",
-              "value": 100
-            },
-            {
               "label": "Penny",
               "value": 150
             },
@@ -314,10 +310,6 @@ angular.module('starter.controllers', ['nvd3'])
             {
               "label": "Total expens",
               "value": 230
-            },
-            {
-              "label": "Mediamarket",
-              "value": 50
             },
             {
               "label": "Penny",
