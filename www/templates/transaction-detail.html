@@ -16,11 +16,23 @@
     </div>
     <div class="row">
       <div class="col">Date</div>
-      <div class="col">{{vm.trx.date}}</div>
+      <div class="col">{{vm.trx.date | date:'medium'}}</div>
     </div>
     <div class="row">
       <div class="col">Category</div>
       <div class="col">{{vm.trx.category}}</div>
+    </div>
+    <div class="row">
+      <div class="col">Booking Text</div>
+      <div class="col">{{vm.trx.bookingText}}</div>
+    </div>
+    <div class="row">
+      <div class="col">Bank Name</div>
+      <div class="col">{{vm.trx.bankName}}</div>
+    </div>
+    <div class="row">
+      <div class="col">Bank Code</div>
+      <div class="col">{{vm.trx.bankCode}}</div>
     </div>
   </ion-content>
 </ion-view>

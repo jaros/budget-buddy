@@ -10,8 +10,9 @@ angular.module('starter.controllers', ['nvd3'])
     // listen for the $ionicView.enter event:
     //
     $scope.$on('$ionicView.enter', function (e) {
-      vm.transactions = Transactions.all();
-      // vm.transactions = [];
+      Transactions.all().then(function (transactions) {
+        vm.transactions = transactions;
+      });
     });
 
     vm.addCategory = function (trx) {
@@ -310,12 +311,16 @@ angular.module('starter.controllers', ['nvd3'])
 
   .controller('TransactionDetailCtrl', function ($scope, $stateParams, Transactions) {
     var vm = this;
-    vm.trx = Transactions.get($stateParams.trxId);
+    Transactions.get($stateParams.trxId).then(function (trans) {
+      vm.trx = trans[0];
+    });
   })
 
   .controller('CategoryCtrl', function ($scope, $stateParams, $state, Transactions) {
     var vm = this;
-    vm.trx = Transactions.get($stateParams.trxId);
+    Transactions.get($stateParams.trxId).then(function (trx) {
+      vm.trx = trx[0];
+    });
 
     vm.save = function (category) {
       vm.trx.category = category.name;

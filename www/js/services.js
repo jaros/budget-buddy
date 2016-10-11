@@ -3,7 +3,7 @@ angular.module('starter.services', [])
 .factory('Categories', function($http) {
   return {
     all: function() {
-      return $http.get('/categories').then(function (resp) {
+      return $http.get('/api/categories').then(function (resp) {
         var res = _.map(resp.data[0], function(elem) {
           return {
             id: elem._id.category == null ? 'undefined' : elem._id.category._id.$oid,
@@ -24,7 +24,7 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('Transactions', function() {
+.factory('Transactions', function($http) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -78,28 +78,42 @@ angular.module('starter.services', [])
     category: 'Unspent'
   }];
 
+  var transactionMapper = function (resp) {
+    var res = _.map(resp.data, function(elem) {
+      return {
+        id: elem.transactionId,
+        recipient: elem.partnerName,
+        amount: elem.amount,
+        date: elem.valueDate.$date,
+        category: elem.category,
+        bookingText: elem.bookingText,
+        bankName: elem.bankName,
+        bankCode: elem.bankCode
+      }
+    });
+    return res;
+  };
+
   return {
+    //  http://bwjmgpmevk.localtunnel.me
     all: function() {
-      return trxs;
+      return $http.get('/api/transactions').then(transactionMapper, function (error) {
+        console.log(error);
+      });
     },
     remove: function(trx) {
       trxs.splice(trxs.indexOf(trx), 1);
     },
     get: function(trxId) {
-      for (var i = 0; i < trxs.length; i++) {
-        if (trxs[i].id === parseInt(trxId)) {
-          return trxs[i];
-        }
-      }
-      return null;
+      return $http.get('/api/transactions/'+trxId).then(transactionMapper);
     },
     save: function (trx) {
-      for (var i = 0; i < trxs.length; i++) {
-        if (trxs[i].id == trx.id) {
-          trxs[i] = trx;
-          return;
+      $http.put('/api/transactions', null, {
+        params: {
+          'transactionId': trx.id,
+          'category': trx.category
         }
-      }
+      })
     }
   };
 });

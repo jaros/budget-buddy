@@ -3,8 +3,8 @@
   "app_id": "",
   "proxies": [
     {
-      "path": "/categories",
-      "proxyUrl": "http://localhost:8080/categories"
+      "path": "/api",
+      "proxyUrl": "http://localhost:8080/api"
     }
   ]
 }

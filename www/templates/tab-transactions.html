@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col">{{trx.recipient}}</div>
           <div class="col">{{trx.amount}} EUR</div>
-          <div class="col hidden-xs">{{trx.date}}</div>
+          <div class="col hidden-xs">{{trx.date | date:'medium'}}</div>
           <div class="col">{{trx.category}}</div>
 
           <i class="icon ion-chevron-right icon-accessory"></i>
