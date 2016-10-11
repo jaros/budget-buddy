@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
-  .constant('serviceApiUrl', '')
-  // .constant('serviceApiUrl','http://fhvdpoayoq.localtunnel.me')
+  // .constant('serviceApiUrl', '')
+  .constant('serviceApiUrl','http://fhvdpoayoq.localtunnel.me')
 
 .factory('Categories', function($http, serviceApiUrl) {
   return {
