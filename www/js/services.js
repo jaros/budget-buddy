@@ -1,9 +1,11 @@
 angular.module('starter.services', [])
+  .constant('serviceApiUrl', '')
+  // .constant('serviceApiUrl','http://wcciqphwza.localtunnel.me')
 
-.factory('Categories', function($http) {
+.factory('Categories', function($http, serviceApiUrl) {
   return {
     all: function() {
-      return $http.get('/api/categories').then(function (resp) {
+      return $http.get(serviceApiUrl + '/api/categories').then(function (resp) {
         var ruleCategories = _.filter(resp.data[0], function (cat) {
             return typeof cat._id.category != "string";
         });
@@ -28,59 +30,7 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('Transactions', function($http) {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var trxs = [{
-    id: 0,
-    recipient: 'Cheapair',
-    amount: '22',
-    date: '23.10.2016',
-    category: 'Travel'
-  },{
-    id: 1,
-    recipient: 'LIDL',
-    amount: '102',
-    date: '23.10.2016',
-    category: 'Food'
-  },{
-    id: 2,
-    recipient: 'SportX',
-    amount: '50',
-    date: '21.10.2016',
-    category: 'Leisure'
-  },{
-    id: 3,
-    recipient: 'Bauhof',
-    amount: '25',
-    date: '23.08.2016',
-    category: 'Utility'
-  },{
-    id: 4,
-    recipient: 'Cheapair',
-    amount: '5',
-    date: '02.10.2016',
-    category: 'Travel'
-  },{
-    id: 5,
-    recipient: 'Kaufland',
-    amount: '7.75',
-    date: '30.09.2016',
-    category: 'Food'
-  },{
-    id: 6,
-    recipient: 'Kaufland',
-    amount: '59',
-    date: '01.10.2016',
-    category: 'Food'
-  },{
-    id: 7,
-    recipient: '-',
-    amount: '30',
-    date: '-',
-    category: 'Unspent'
-  }];
+.factory('Transactions', function($http, serviceApiUrl) {
 
   var transactionMapper = function (resp) {
     var res = _.map(resp.data, function(elem) {
@@ -99,20 +49,16 @@ angular.module('starter.services', [])
   };
 
   return {
-    //  http://bwjmgpmevk.localtunnel.me
     all: function() {
-      return $http.get('/api/transactions').then(transactionMapper, function (error) {
+      return $http.get(serviceApiUrl + '/api/transactions').then(transactionMapper, function (error) {
         console.log(error);
       });
     },
-    remove: function(trx) {
-      trxs.splice(trxs.indexOf(trx), 1);
-    },
     get: function(trxId) {
-      return $http.get('/api/transactions/'+trxId).then(transactionMapper);
+      return $http.get(serviceApiUrl + '/api/transactions/'+trxId).then(transactionMapper);
     },
     save: function (trx) {
-      $http.put('/api/transactions', null, {
+      $http.put(serviceApiUrl + '/api/transactions', null, {
         params: {
           'transactionId': trx.id,
           'category': trx.category
