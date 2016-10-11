@@ -134,7 +134,7 @@ angular.module('starter.controllers', ['nvd3'])
       }
     };
 
-    if (vm.selectedCategory == 'Leisure') {
+    if (vm.selectedCategory == 'Healthcare') {
       vm.barData = [
         {
           "key": "Target",
@@ -173,7 +173,7 @@ angular.module('starter.controllers', ['nvd3'])
           ]
         }
       ];
-    } else if (vm.selectedCategory == 'Travel') {
+    } else if (vm.selectedCategory == 'Fuel') {
       vm.barData = [
         {
           "key": "Target",
@@ -212,7 +212,7 @@ angular.module('starter.controllers', ['nvd3'])
           ]
         }
       ];
-    }else if (vm.selectedCategory == 'Utility') {
+    }else if (vm.selectedCategory == 'Telekom') {
       vm.barData = [
         {
           "key": "Target",
