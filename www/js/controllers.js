@@ -141,6 +141,10 @@ angular.module('starter.controllers', ['nvd3'])
           "color": "#d62728",
           "values": [
             {
+              "label": "Total expens",
+              "value": 330
+            },
+            {
               "label": "Pink Palace",
               "value": 50
             },
@@ -158,6 +162,10 @@ angular.module('starter.controllers', ['nvd3'])
           "key": "Spent",
           "color": "#1f77b4",
           "values": [
+            {
+              "label": "Total expens",
+              "value": 160
+            },
             {
               "label": "Pink Palace",
               "value": 30
@@ -180,6 +188,10 @@ angular.module('starter.controllers', ['nvd3'])
           "color": "#d62728",
           "values": [
             {
+              "label": "Total expens",
+              "value": 1650
+            },
+            {
               "label": "Lufthansa",
               "value": 750
             },
@@ -197,6 +209,10 @@ angular.module('starter.controllers', ['nvd3'])
           "key": "Spent",
           "color": "#1f77b4",
           "values": [
+            {
+              "label": "Total expens",
+              "value": 1000
+            },
             {
               "label": "Lufthansa",
               "value": 250
@@ -219,6 +235,10 @@ angular.module('starter.controllers', ['nvd3'])
           "color": "#d62728",
           "values": [
             {
+              "label": "Total expens",
+              "value": 95
+            },
+            {
               "label": "Electricity",
               "value": 35
             },
@@ -236,6 +256,10 @@ angular.module('starter.controllers', ['nvd3'])
           "key": "Spent",
           "color": "#1f77b4",
           "values": [
+            {
+              "label": "Total expens",
+              "value": 80
+            },
             {
               "label": "Electricity",
               "value": 33.55
@@ -257,6 +281,10 @@ angular.module('starter.controllers', ['nvd3'])
           "key": "Target",
           "color": "#d62728",
           "values": [
+            {
+              "label": "Total expens",
+              "value": 400
+            },
             {
               "label": "Mediamarket",
               "value": 100
@@ -283,6 +311,10 @@ angular.module('starter.controllers', ['nvd3'])
           "key": "Spent",
           "color": "#1f77b4",
           "values": [
+            {
+              "label": "Total expens",
+              "value": 230
+            },
             {
               "label": "Mediamarket",
               "value": 50
