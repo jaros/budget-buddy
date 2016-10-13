@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['nvd3'])
 
-  .controller('DashCtrl', ['$scope', '$state', 'Categories', mainController])
+  .controller('DashCtrl', ['$scope', '$state', 'allCategories', mainController])
 
   .controller('TransactionsCtrl', function ($scope, $state, Transactions) {
     var vm = this;
@@ -392,7 +392,7 @@ angular.module('starter.controllers', ['nvd3'])
 
   });
 
-function mainController($scope, $state, Categories) {
+function mainController($scope, $state, allCategories) {
   var vm = this;
 
   $scope.$on('$ionicView.enter', function (e) {
@@ -413,12 +413,10 @@ function mainController($scope, $state, Categories) {
 
     vm.pieData = [];
 
-    Categories.all().then(function (categories) {
-      _.each(categories, function (element, index) {
-        vm.pieData.push({
-          key: element.category.name,
-          y: element.total
-        });
+    _.each(allCategories, function (element) {
+      vm.pieData.push({
+        key: element.category.name,
+        y: element.total
       });
     });
 

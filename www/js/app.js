@@ -51,7 +51,12 @@ angular.module('starter', [
     views: {
       'tab-budget': {
         templateUrl: 'templates/tab-budget.html',
-        controller: 'DashCtrl as vm'
+        controller: 'DashCtrl as vm',
+        resolve: {
+          allCategories: function (Categories) {
+            return Categories.all();
+          }
+        }
       }
     }
   })
