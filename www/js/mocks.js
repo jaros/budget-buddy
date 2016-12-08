@@ -167,6 +167,12 @@ myAppDev.run(function ($httpBackend) {
     return [200, {'data': transactions[transactionId]}, {}];
   });
 
+  $httpBackend.whenPUT(/^\/api\/transactions(?:\?(.*))?$/).respond(function (method, url, data, headers, params) {
+    var transactionId = params.transactionId;
+    transactions[transactionId].category = params.category;
+    return [200];
+  });
+
 // adds a new phone to the phones array
   $httpBackend.whenPOST('/api/categories').respond(function (method, url, data) {
     var phone = angular.fromJson(data);
