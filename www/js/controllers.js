@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['nvd3'])
+angular.module('starter.controllers', ['nvd3', 'chart.js'])
 
   .controller('DashCtrl', ['$scope', '$state', 'allCategories', mainController])
 
@@ -412,52 +412,24 @@ function mainController($scope, $state, allCategories) {
     });*/
 
     vm.pieData = [];
+    vm.pieLabels = [];
+
+    var lastClickedIdx = -1;
 
     _.each(allCategories, function (element) {
-      vm.pieData.push({
-        key: element.category.name,
-        y: element.total
-      });
+      vm.pieData.push(element.total);
+      vm.pieLabels.push(element.category.name);
     });
 
-  });
-
-  vm.pieOptions = {
-    chart: {
-      type: 'pieChart',
-      height: 500,
-      // donut: true,
-      x: function (d) {
-        return d.key;
-      },
-      y: function (d) {
-        return d.y;
-      },
-      pie: {
-        dispatch: {
-          elementClick: function (t) {
-            console.log("one click: " + t.data.key);
-          },
-          elementDblClick: function (t) {
-            console.log("db click: " + t.data.key);
-            if (t.data.key != 'Unspent') {
-              $state.go('tab.budget-details', {category: t.data.key});
-            }
-          }
-        }
-      },
-      showLabels: true,
-      duration: 500,
-      labelThreshold: 0.01,
-      labelSunbeamLayout: true,
-      legend: {
-        margin: {
-          top: 5,
-          right: 35,
-          bottom: 5,
-          left: 0
-        }
+    vm.pieClicked = function (event) {
+      var key = event[0]._model.label;
+      var index = event[0]._index;
+      if (key != 'Unspent' && lastClickedIdx === index) {
+        lastClickedIdx = -1;
+        $state.go('tab.budget-details', {category: key});
       }
+      lastClickedIdx = index;
     }
-  };
+
+  });
 }
