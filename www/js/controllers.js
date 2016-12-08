@@ -425,13 +425,25 @@ function mainController($scope, $state, allCategories) {
     });
 
     vm.pieClicked = function (event) {
-      var key = event[0]._model.label;
-      var index = event[0]._index;
-      if (key != 'Unspent' && lastClickedIdx === index) {
-        lastClickedIdx = -1;
-        $state.go('tab.budget-details', {category: key});
+      var chart = event[0];
+      if (chart) {
+        var key = chart._model.label;
+        var index = chart._index;
+        if (key != 'Unspent' && lastClickedIdx === index) {
+          lastClickedIdx = -1;
+          $state.go('tab.budget-details', {category: key});
+        }
+        lastClickedIdx = index;
       }
-      lastClickedIdx = index;
+    };
+
+    vm.pieOptions = {
+      animation:{
+        animateScale:true
+      },
+      legend: {
+        display: true
+      }
     }
 
   });
