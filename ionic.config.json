@@ -1,10 +1,4 @@
 {
   "name": "budget-buddy-mob",
-  "app_id": "",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://napurttuuv.localtunnel.me/api"
-    }
-  ]
+  "app_id": ""
 }
