@@ -1,4 +1,7 @@
 angular.module('starter.controllers', ['nvd3', 'chart.js'])
+  .config(function () {
+    Chart.defaults.global.colors = ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78'];
+  })
 
   .controller('DashCtrl', ['$scope', '$state', 'allCategories', mainController])
 
