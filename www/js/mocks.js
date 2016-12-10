@@ -239,6 +239,177 @@ myAppDev.run(function ($httpBackend) {
     ]
   });
 
+  $httpBackend.whenGET(/^\/api\/expenses\/overview(?:\?(.*))?$/).respond(function (method, url, data, headers, params) {
+    var category = params.category;
+    var expenses = {};
+    if (category == 'Healthcare') {
+      expenses = {
+          "Target": [
+            {
+              "label": "Total expens",
+              "value": 330
+            },
+            {
+              "label": "Pink Palace",
+              "value": 50
+            },
+            {
+              "label": "OperaHause",
+              "value": 250
+            },
+            {
+              "label": "Spa",
+              "value": 30
+            }
+          ],
+        "Spent": [
+            {
+              "label": "Total expens",
+              "value": 160
+            },
+            {
+              "label": "Pink Palace",
+              "value": 30
+            },
+            {
+              "label": "OperaHause",
+              "value": 100
+            },
+            {
+              "label": "Spa",
+              "value": 30
+            }
+          ]
+        };
+    } else if (category == 'Fuel') {
+      expenses = {
+          "Target": [
+            {
+              "label": "Total expens",
+              "value": 1650
+            },
+            {
+              "label": "Lufthansa",
+              "value": 750
+            },
+            {
+              "label": "SWISS Air",
+              "value": 400
+            },
+            {
+              "label": "Alpine Resort",
+              "value": 500
+            }
+          ],
+        "Spent": [
+            {
+              "label": "Total expens",
+              "value": 1000
+            },
+            {
+              "label": "Lufthansa",
+              "value": 250
+            },
+            {
+              "label": "SWISS Air",
+              "value": 390
+            },
+            {
+              "label": "Alpine Resort",
+              "value": 350
+            }
+          ]
+        };
+    } else if (category == 'Telekom') {
+      expenses = { "Target": [
+            {
+              "label": "Total expens",
+              "value": 95
+            },
+            {
+              "label": "Electricity",
+              "value": 35
+            },
+            {
+              "label": "TV/Internet",
+              "value": 49
+            },
+            {
+              "label": "Gas",
+              "value": 10
+            }
+          ],
+        "Spent": [
+            {
+              "label": "Total expens",
+              "value": 80
+            },
+            {
+              "label": "Electricity",
+              "value": 33.55
+            },
+            {
+              "label": "TV/Internet",
+              "value": 49
+            },
+            {
+              "label": "Gas",
+              "value": 11.98
+            }
+          ]
+        } ;
+    } else {
+      expenses = { "Target": [
+            {
+              "label": "Total expens",
+              "value": 400
+            },
+            {
+              "label": "Penny",
+              "value": 150
+            },
+            {
+              "label": "Lidl",
+              "value": 195.70
+            },
+            {
+              "label": "Edeka",
+              "value": 181.74
+            },
+            {
+              "label": "Kaufland",
+              "value": 172.009071426284
+            }
+          ]
+        ,
+        "Spent": [
+            {
+              "label": "Total expens",
+              "value": 230
+            },
+            {
+              "label": "Penny",
+              "value": 97.5
+            },
+            {
+              "label": "Lidl",
+              "value": 185
+            },
+            {
+              "label": "Edeka",
+              "value": 170
+            },
+            {
+              "label": "Kaufland",
+              "value": 49.9
+            }
+          ]
+        };
+    }
+
+    return [200, expenses, {}];
+  });
+
   $httpBackend.whenGET(/templates/).passThrough(); // Requests for templates are handled by the real server
 //...
 

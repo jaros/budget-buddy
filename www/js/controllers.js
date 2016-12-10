@@ -69,7 +69,7 @@ angular.module('starter.controllers', ['nvd3', 'chart.js'])
 
   }])
 
-  .controller('BudgetCategoryDetailsCtrl', function ($scope, $stateParams, Transactions) {
+  .controller('BudgetCategoryDetailsCtrl', function ($scope, $stateParams, Expenses) {
     var vm = this;
 
     vm.selectedCategory = $stateParams.category;
@@ -102,203 +102,20 @@ angular.module('starter.controllers', ['nvd3', 'chart.js'])
       }
     };
 
-    if (vm.selectedCategory == 'Healthcare') {
+    Expenses.getExpensesOverviewForCategory(vm.selectedCategory).then(function (expensesByCategory) {
       vm.barData = [
         {
           "key": "Target",
           "color": "#d62728",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 330
-            },
-            {
-              "label": "Pink Palace",
-              "value": 50
-            },
-            {
-              "label": "OperaHause",
-              "value": 250
-            },
-            {
-              "label": "Spa",
-              "value": 30
-            }
-          ]
+          "values": expensesByCategory.Target
         },
         {
           "key": "Spent",
           "color": "#1f77b4",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 160
-            },
-            {
-              "label": "Pink Palace",
-              "value": 30
-            },
-            {
-              "label": "OperaHause",
-              "value": 100
-            },
-            {
-              "label": "Spa",
-              "value": 30
-            }
-          ]
+          "values": expensesByCategory.Spent
         }
       ];
-    } else if (vm.selectedCategory == 'Fuel') {
-      vm.barData = [
-        {
-          "key": "Target",
-          "color": "#d62728",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 1650
-            },
-            {
-              "label": "Lufthansa",
-              "value": 750
-            },
-            {
-              "label": "SWISS Air",
-              "value": 400
-            },
-            {
-              "label": "Alpine Resort",
-              "value": 500
-            }
-          ]
-        },
-        {
-          "key": "Spent",
-          "color": "#1f77b4",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 1000
-            },
-            {
-              "label": "Lufthansa",
-              "value": 250
-            },
-            {
-              "label": "SWISS Air",
-              "value": 390
-            },
-            {
-              "label": "Alpine Resort",
-              "value": 350
-            }
-          ]
-        }
-      ];
-    }else if (vm.selectedCategory == 'Telekom') {
-      vm.barData = [
-        {
-          "key": "Target",
-          "color": "#d62728",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 95
-            },
-            {
-              "label": "Electricity",
-              "value": 35
-            },
-            {
-              "label": "TV/Internet",
-              "value": 49
-            },
-            {
-              "label": "Gas",
-              "value": 10
-            }
-          ]
-        },
-        {
-          "key": "Spent",
-          "color": "#1f77b4",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 80
-            },
-            {
-              "label": "Electricity",
-              "value": 33.55
-            },
-            {
-              "label": "TV/Internet",
-              "value": 49
-            },
-            {
-              "label": "Gas",
-              "value": 11.98
-            }
-          ]
-        }
-      ];
-    } else {
-      vm.barData = [
-        {
-          "key": "Target",
-          "color": "#d62728",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 400
-            },
-            {
-              "label": "Penny",
-              "value": 150
-            },
-            {
-              "label": "Lidl",
-              "value": 195.70
-            },
-            {
-              "label": "Edeka",
-              "value": 181.74
-            },
-            {
-              "label": "Kaufland",
-              "value": 172.009071426284
-            }
-          ]
-        },
-        {
-          "key": "Spent",
-          "color": "#1f77b4",
-          "values": [
-            {
-              "label": "Total expens",
-              "value": 230
-            },
-            {
-              "label": "Penny",
-              "value": 97.5
-            },
-            {
-              "label": "Lidl",
-              "value": 185
-            },
-            {
-              "label": "Edeka",
-              "value": 170
-            },
-            {
-              "label": "Kaufland",
-              "value": 49.9
-            }
-          ]
-        }
-      ];
-    }
+    });
   })
 
   .controller('TransactionDetailCtrl', function ($scope, $stateParams, Transactions) {
