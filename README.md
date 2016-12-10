@@ -8,6 +8,4 @@
 - to add a platform use: ```ionic platform add [ios, android]```
 - to build the platform use: ```ionic build ios``` or ```ionic build android```
 - to deploy ionic run android --device
-
-TODO:
-- on ios devices the charts are not clickable (native browser issue), please use android to demonstrate the chart actions 
+ 
