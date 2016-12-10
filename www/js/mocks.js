@@ -179,6 +179,46 @@ myAppDev.run(function ($httpBackend) {
     categories.push(phone);
     return [200, phone, {}];
   });
+
+  $httpBackend.whenGET('/api/expenses/total').respond({
+    "Limit": [
+      {
+        "label": "Food",
+        "value": 100
+      },
+      {
+        "label": "Leisure",
+        "value": 150
+      },
+      {
+        "label": "Travel",
+        "value": 195.70
+      },
+      {
+        "label": "Utility",
+        "value": 181.74
+      }
+    ],
+    "Spent": [
+      {
+        "label": "Food",
+        "value": 50
+      },
+      {
+        "label": "Leisure",
+        "value": 97.5
+      },
+      {
+        "label": "Travel",
+        "value": 185
+      },
+      {
+        "label": "Utility",
+        "value": 170
+      }
+    ]
+  });
+
   $httpBackend.whenGET(/templates/).passThrough(); // Requests for templates are handled by the real server
 //...
 

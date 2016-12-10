@@ -65,7 +65,12 @@ angular.module('starter', [
     views: {
       'tab-expenses': {
         templateUrl: 'templates/tab-expenses.html',
-        controller: 'BudgetCtrl as vm'
+        controller: 'BudgetCtrl as vm',
+        resolve: {
+          totalExpenses: function (Expenses) {
+            return Expenses.getExpensesOverview();
+          }
+        }
       }
     }
   })

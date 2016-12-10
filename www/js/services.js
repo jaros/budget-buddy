@@ -74,4 +74,16 @@ angular.module('starter.services', [])
       })
     }
   };
-});
+})
+  .factory('Expenses', function($http, serviceApiUrl){
+    return {
+      getExpensesOverview: function () {
+        return $http.get(serviceApiUrl + '/api/expenses/total').then(function (resp) {
+          return resp.data;
+        }, function (error) {
+          console.log(error);
+        });
+      }
+    };
+  })
+;

@@ -23,9 +23,8 @@ angular.module('starter.controllers', ['nvd3', 'chart.js'])
     };
   })
 
-  .controller('BudgetCtrl', function () {
+  .controller('BudgetCtrl', ['totalExpenses', function (budgetExpensesTotal) {
     var vm = this;
-
 
     vm.budgetOptions = {
       chart: {
@@ -59,50 +58,16 @@ angular.module('starter.controllers', ['nvd3', 'chart.js'])
       {
         "key": "Limit",
         "color": "#d62728",
-        "values": [
-          {
-            "label": "Food",
-            "value": 100
-          },
-          {
-            "label": "Leisure",
-            "value": 150
-          },
-          {
-            "label": "Travel",
-            "value": 195.70
-          },
-          {
-            "label": "Utility",
-            "value": 181.74
-          }
-        ]
+        "values": budgetExpensesTotal.Limit
       },
       {
         "key": "Spent",
         "color": "#1f77b4",
-        "values": [
-          {
-            "label": "Food",
-            "value": 50
-          },
-          {
-            "label": "Leisure",
-            "value": 97.5
-          },
-          {
-            "label": "Travel",
-            "value": 185
-          },
-          {
-            "label": "Utility",
-            "value": 170
-          }
-        ]
+        "values": budgetExpensesTotal.Spent
       }
     ];
 
-  })
+  }])
 
   .controller('BudgetCategoryDetailsCtrl', function ($scope, $stateParams, Transactions) {
     var vm = this;
