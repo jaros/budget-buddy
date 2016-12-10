@@ -308,7 +308,7 @@ angular.module('starter.controllers', ['nvd3', 'chart.js'])
     });
   })
 
-  .controller('CategoryCtrl', function ($scope, $stateParams, $state, Transactions) {
+  .controller('CategoryCtrl', function ($scope, $stateParams, $state, Transactions, Categories) {
     var vm = this;
     Transactions.get($stateParams.trxId).then(function (trx) {
       vm.trx = trx[0];
@@ -320,26 +320,9 @@ angular.module('starter.controllers', ['nvd3', 'chart.js'])
       $state.go('tab.transactions')
     };
 
-    vm.categories = [
-      {
-        name: 'Travel'
-      },
-      {
-        name: 'Food'
-      }, {
-        name: 'Leisure'
-      }, {
-        name: 'Utility'
-      }, {
-        name: 'Rental'
-      }, {
-        name: 'Family'
-      }, {
-        name: 'Hobby'
-      }, {
-        name: 'Education'
-      }
-    ];
+    Categories.allTemplate().then(function (categories) {
+      vm.categories = categories;
+    });
   })
 
   .controller('OffersCtrl', function ($scope) {

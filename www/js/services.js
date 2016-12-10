@@ -34,6 +34,14 @@ angular.module('starter.services', [])
       }, function (error) {
         console.log(error);
       });
+    },
+
+    allTemplate: function () {
+      return $http.get(serviceApiUrl + '/api/template-categories').then(function (resp) {
+        return resp.data;
+      }, function (error) {
+        console.log(error);
+      })
     }
   }
 })

@@ -35,6 +35,26 @@ myAppDev.run(function ($httpBackend) {
 
 // returns the current list of categories
   $httpBackend.whenGET('/api/categories').respond(categories);
+  $httpBackend.whenGET('/api/template-categories').respond([
+    {
+      name: 'Travel'
+    },
+    {
+      name: 'Food'
+    }, {
+      name: 'Leisure'
+    }, {
+      name: 'Utility'
+    }, {
+      name: 'Rental'
+    }, {
+      name: 'Family'
+    }, {
+      name: 'Hobby'
+    }, {
+      name: 'Education'
+    }
+  ]);
 
 
   var transactions = [{
